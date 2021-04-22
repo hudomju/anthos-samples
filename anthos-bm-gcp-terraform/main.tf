@@ -27,7 +27,7 @@ provider "google-beta" {
 
 locals {
   init_script_logfile_name            = "init.log"
-  vm_name_template                    = "abm-%s%d"
+  vm_name_template                    = "${var.abm_cluster_id}-%s%d"
   admin_vm_name                       = [format(local.vm_name_template, "ws", 0)]
   vm_names                            = concat(local.admin_vm_name, local.controlplane_vm_names, local.worker_vm_names)
   controlplane_vm_names               = [for i in range(var.instance_count.controlplane) : format(local.vm_name_template, "cp", i + 1)]
