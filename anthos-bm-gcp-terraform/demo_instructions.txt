@@ -21,6 +21,9 @@ export VERSION="0.14.10"
 # List ABM clusters
 gcloud container hub memberships list
 
+# Listing the details of prep-cluster
+gcloud container hub memberships describe $PREP_CLUSTER_NAME
+
 # Remove any previous versions
 sudo apt remove terraform
 
@@ -65,6 +68,9 @@ export KUBECONFIG=$HOME/bmctl-workspace/$CLUSTER_ID/$CLUSTER_ID-kubeconfig
 
 # List ABM clusters
 gcloud container hub memberships list
+
+# Listing the details of live-cluster
+gcloud container hub memberships describe $LIVE_CLUSTER_NAME
 
 kubectl get nodes
 
