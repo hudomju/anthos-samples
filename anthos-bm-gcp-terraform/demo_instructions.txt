@@ -11,6 +11,9 @@ gcloud compute scp ~/gcp_keys/cloudmlplat_sa.json puneith@$DEMO_HOST:~/abm-sa.js
 # Now ssh into the demo machine and perform steps below
 ssh-gce $DEMO_HOST
 
+# Activate SA
+gcloud auth activate-service-account --key-file=/home/puneith/abm-sa.json
+
 # Install Git 
 sudo apt-get install git
 
@@ -48,7 +51,6 @@ cp tfvars/terraform.tfvars.pkaul ./terraform.tfvars
 
 #[TODO] Get SA JSON
 
-gcloud auth activate-service-account --key-file=/home/puneith/abm-sa.json
 gcloud compute firewall-rules create ssh --allow tcp:22
 
 # Change cluster name and service account name
